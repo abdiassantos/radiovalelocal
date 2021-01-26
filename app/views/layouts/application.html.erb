@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Vale Notícias</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <% if content_for?(:metas) %>
+      <%= yield :metas %>
+    <% else %>
+      <meta property="og:title" content="Vale notícias" />
+      <meta name="description" content="Vale noticias" />
+    <% end %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+        
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script data-ad-client="ca-pub-5996828241895197" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+  </head>
+
+  <body class="relative">
+    <%= render  "layouts/components/site/header" %>
+    <%= render  "layouts/components/site/sidebar" %>
+
+      <%= yield %>
+
+    <script data-ad-client="ca-pub-7122660164529776" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <%= render  "layouts/components/site/footer" %>
+
+    <%= toastr_bootstrap_flash %>
+    <%= javascript_pack_tag 'application' %>
+    <% if Rails.env.development? %>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164629055-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-164629055-1');
+      </script>
+    <% else %>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163788621-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163788621-1');
+      </script>
+      <script data-ad-client="ca-pub-7122660164529776" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <% end %>
+  </body>
+</html>

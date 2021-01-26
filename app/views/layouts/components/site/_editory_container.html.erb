@@ -1,0 +1,22 @@
+<% if editory.articles.active.size > 0 %>
+  <div class="flex flex-col <%= defined?(width) ? "w-full" : "editoriesMain" %> <%= margin ? 'mr-8' : ''%> mt-6">
+    <hr class="w-full bg-gray-600 h-1" />
+    <div class="flex mt-12">
+      <span class="font-bold text-lg"><%= title %></span>
+      <%= link_to "Ver mais", url, class: "font-bold text-lg ml-auto text-blue-500" %>
+    </div>
+    <div class="flex mt-8 flex-col lg:flex-row xl:flex-row">
+      <div class="flex mb-4 xl:mb-0 lg:mb-0 w-full xl:w-1/2 lg:w-1/2">
+        <% if editory.articles.last.present? %>
+          <%= render "layouts/components/site/cards/editories_main", url: article_path(editory.articles.last), image: editory.articles.last.image, title: editory.articles.last.title, published_at: editory.articles.last.published_at.strftime("%d/%m/%Y")%>
+        <% end %>
+      </div>
+      <div class="flex flex-col w-full xl:w-1/2 lg:w-1/2 ml-0 xl:ml-8 lg:ml-8">
+        <% editory.articles.active.last(4).each do |article| %>
+          <%= render "layouts/components/site/cards/editories_link", url: article_path(article), title: article.title %>
+          <hr class="my-6 h-px bg-gray-300 w-full" />
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>  

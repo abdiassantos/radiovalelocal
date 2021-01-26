@@ -1,0 +1,4 @@
+pt-BR: 
+  cancancan:
+    permission_denied: "Desculpe, você não tem permissão para acessar esta área."
+    permission_acesses: "Desculpe, você precisa esta logado para acessar esta área."

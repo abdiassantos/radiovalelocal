@@ -1,0 +1,38 @@
+<header class="flex flex-col">
+  <div class="flex flex-row-reverse md:flex-row xl:flex-row lg:flex-row bg-black text-white px-2 lg:px-16 py-2 overflow-x-scroll">
+    <ul class="flex ml-8 lg:ml-0">
+      <!--li class="mr-4 text-sm"><%#= link_to "Noticia", root_path %></li-->
+      <li class="mr-4 text-sm"><%= link_to "Cidades", counties_path %></li>
+      <li class="mr-4 text-sm"><%= link_to "Editorias", editories_path %></li>
+      <li class="text-sm w-32"><%= link_to "Sobre a Rádio", about_radio_path %></li>
+      <li class="text-sm w-32"><%= link_to "Grupo vale", about_group_path %></li>
+      <li class="text-sm w-32"><%= link_to "Coluna social", events_path %></li>
+      <li class="text-sm"><%= link_to "Contato", contacts_path %></li>
+    </ul>
+    <ul class="flex ml-4 md:ml-auto lg:ml-auto xl:ml-auto">
+      <li class="mr-4 ml-4 lg:ml-0 text-sm"><a href="https://www.facebook.com/Vale-FM-88-107927380742068/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+      <li class="text-sm"><a href="https://www.instagram.com/valefm88/" target="_blank"> <i class="fab fa-instagram"></i></a></li>
+    </ul>
+  </div>
+  <div class="flex bg-white px-4 xl:px-16 lg:px-16 py-2 shadow-md items-center">
+    <a href="#" class="mr-8 menuButton"><i class="fas fa-bars"></i></a>
+    <!--<a href="/" class="text-3xl font-bold"><span class="text-blue-800">Portal</span><span class="text-logo">Vale</span></a>-->
+    <a href="/" class="w-32 font-bold"><%= image_tag 'valenoticia.png' %></a>
+    <nav class="hidden ml-16 lg:flex xl:flex navMenu">
+      <ul class="flex items-center">
+        <li class="font-bold text-xs mr-6"><%= link_to "PRINCIPAL", root_path %></li>
+        <li class="font-bold text-xs mr-6"><%= link_to "MUNICIPIOS", counties_path %></li>
+        <li class="font-bold text-xs mr-6"><%= link_to "BLOGS", blogs_path %></li>
+        <li class="font-bold text-xs mr-6"><%= link_to "FOTOS", galleries_path %></li>
+        <li class="font-bold text-xs mr-6"><%= link_to "VIDEOS", videos_path %></li>
+        <li class="font-bold text-xs mr-6"><%= link_to "RADIO", radios_path %></li>
+        <li class="font-bold text-xs mr-6"><%= link_to "YOUTUBE", youtube_ao_vivo_videos_path %></li>
+      </ul>
+    </nav>
+    <a href="" class="hidden searchField ml-auto searchIcon"><i class="fas fa-times"></i></a>
+    <%= search_form_for @q, url: articles_path, html: {class: "hidden searchField h-8 rounded w-9/12 ml-auto flex mr-8"} do |f| %>
+      <%= f.search_field :headline_or_title_cont %>
+    <% end %>
+    <a href="" class="ml-auto searchIcon searchHidden"><i class="fas fa-search"></i></a>
+  </div>
+</header>

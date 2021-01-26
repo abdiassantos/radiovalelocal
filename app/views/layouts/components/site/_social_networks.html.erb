@@ -1,0 +1,25 @@
+<div class="flex flex-col mt-8 bg-white px-6 py-8 shadow rounded">
+  <span class="font-bold">REDES SOCIAIS</span>
+</div>
+<div class="flex flex-flex mt-2 py-8">
+  <div class="flex justify-around w-full">
+    <a href="https://www.facebook.com/Vale-FM-88-107927380742068/" target="_blank" class="bg-blue-800 mt-6 lg:mt-0 xl:mt-0 text-white w-32 h-24 rounded flex flex-col items-center justify-center text-xs font-bold">
+      <i class="fab fa-facebook mb-2"></i>
+      FACEBOOK
+    </a>
+    <a href="https://www.instagram.com/valefm88/"  target="_blank"class="bg-pink-500 ml-1 mt-6 lg:mt-0 xl:mt-0 text-white w-32 h-24 rounded flex flex-col items-center justify-center text-xs font-bold">
+      <i class="fab fa-instagram mb-2"></i>
+      INSTAGRAM
+    </a>
+    <% if @youtube_live.present? %>
+      <a href="<%= @youtube_live.link %>"  target="_blank"class="bg-red-500 ml-1 mt-6 lg:mt-0 xl:mt-0 text-white w-32 h-24 rounded flex flex-col items-center justify-center text-xs font-bold">
+        <i class="fab fa-youtube mb-2"></i>
+        YOUTUBE
+      </a>
+    <% end %>  
+    <%= link_to radios_path, target: "_blank", class: "bg-blue-300 mt-6 lg:mt-0 ml-1 xl:mt-0 text-white w-32 h-24 rounded flex flex-col items-center justify-center text-xs font-bold" do %>
+      <i class="fas fa-broadcast-tower mb-2"></i>
+      RADIO
+    <% end %>
+  </div>
+</div>

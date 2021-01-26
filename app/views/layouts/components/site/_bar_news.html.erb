@@ -1,0 +1,18 @@
+<div class="flex px-8 mt-8 w-full">
+  <div class="bg-blue-500 w-1/8 flex items-center rounded-l px-1">
+    <i class="text-sm fas fa-bolt text-white"></i>
+    <span class="ml-2 text-white font-bold text-sm">ÚLTIMAS</span>
+  </div>
+  <div class="gliderBarNews px-2 flex items-center w-6/8 bg-white gliderNewsShadow">
+    <% @bar_articles.each do |article| %>
+      <%= link_to article_path(article), class: "w-full font-light text-sm lg:text-md xl:text-md" do %>
+        <%= article.title %>
+      <% end %>
+    <% end %>
+  </div>  
+  <div class="w-1/8 flex ml-auto px-4 items-center bg-white gliderNewsShadow">
+    <a role="button" aria-label="Previous" id="glider-prev" href="#"><i class="fas fa-caret-left"></i></a>
+    <hr class="mx-4 h-6 bg-gray-300 w-px" />
+    <a href="#" role="button" aria-label="Next" id="glider-next"><i class="fas fa-caret-right"></i></a>
+  </div>
+</div>

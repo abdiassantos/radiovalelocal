@@ -1,0 +1,9 @@
+<% if @side_banners.size > 0 %>
+  <div id="gliderBannerSides" class="flex w-full my-2 relative">
+    <% @side_banners.each do |banner| %>
+      <%= link_to banner.link, class: "flex flex-col shadow rounded relative" do %>
+        <%= image_tag url_for(banner.file), class: "object-fill w-full h-full" %>
+      <% end %>
+    <% end %>  
+  </div>  
+<% end %>  

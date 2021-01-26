@@ -1,0 +1,57 @@
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row shadow-sm navbar-dark bg-primary">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+    <a class="navbar-brand brand-logo" href="#"><%= image_tag "logo.svg", alt: "logo" %></a>
+    <a class="navbar-brand brand-logo-mini" href="#"><%= image_tag "logo-mini.svg", alt: "logo" %></a>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-stretch">
+    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      <span class="mdi mdi-menu"></span>
+    </button>
+
+    <%# render partial: 'layouts/components/admin/navbar_search' %>
+
+    <%= tag.ul class: "navbar-nav navbar-nav-right" do %>
+      <%= tag.li class: "nav-item nav-profile dropdown" do %>
+        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+          <div class="nav-profile-img">
+            <%= image_tag 'defaults/noavatar.png', alt: current_user.email %>
+            <span class="availability-status online"></span>
+          </div>
+          <div class="nav-profile-text">
+            <p class="mb-1 text-black">
+              <%= current_user.email %>
+            </p>
+          </div>
+        </a>
+        <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+          <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+            <i class="mdi mdi-cached mr-2 text-success"></i> 
+            Editar Perfil
+          <% end %>
+          <div class="dropdown-divider"></div>
+          <%= link_to destroy_user_session_path, method: Devise.sign_out_via, class: "dropdown-item", title: 'Sair' do %>
+            <i class="mdi mdi-logout mr-2 text-primary"></i> Sair
+          <% end %>
+        </div>
+      <% end %>
+
+      <li class="nav-item d-none d-lg-block full-screen-link">
+        <a class="btn btn-link nav-link" title="Fullscreen">
+          <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+        </a>
+      </li>
+
+      <%# render partial: 'layouts/components/admin/navbar_drop_messages' %>
+
+      <%= tag.li class: "nav-item nav-logout d-none d-lg-block" do %>
+        <%= link_to destroy_user_session_path, method: Devise.sign_out_via, class: "nav-link", title: 'Sair' do %>
+          <i class="mdi mdi-power"></i>
+        <% end %>
+      <% end %>
+    <% end if user_signed_in? %>
+
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+      <span class="mdi mdi-menu"></span>
+    </button>
+  </div>
+</nav>

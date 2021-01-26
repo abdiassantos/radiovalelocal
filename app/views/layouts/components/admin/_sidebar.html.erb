@@ -1,0 +1,40 @@
+<nav class="sidebar sidebar-offcanvas shadow-sm" id="sidebar">
+  <ul class="nav">
+    <%= tag.li class: "nav-item nav-profile" do %>
+      <a href="#" class="nav-link">
+        <div class="nav-profile-image">
+          <%= image_tag 'defaults/noavatar.png', alt: current_user.email %>
+          <span class="login-status online"></span>
+          <!--change to offline or busy as needed-->
+        </div>
+        <div class="nav-profile-text d-flex flex-column">
+          <span class="font-weight-bold mb-2">
+            <%= current_user.email %>
+          </span>
+          <small class="text-light text-small"><%= current_user.email %></small>
+        </div>
+        <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+      </a>
+    <% end if user_signed_in? %>
+
+    <sidebar-actions title="Menu Principal"></sidebar-actions>
+
+    <nav-item link="<%= admin_root_path %>" title="Dashboard" icon="collage"></nav-item>
+    <nav-item link="<%= admin_articles_path %>" title="<%= Article.model_name.human.pluralize.titleize %>" icon="newspaper"></nav-item>
+    <nav-item link="<%= admin_banners_path %>" title="<%= Banner.model_name.human.pluralize.titleize %>" icon="blogger"></nav-item>
+    <nav-item link="<%= admin_contacts_path %>" title="<%= Contact.model_name.human.pluralize.titleize %>" icon="comment-check-outline"></nav-item>
+    <nav-item link="<%= admin_editories_path %>" title="<%= Editory.model_name.human.pluralize.titleize %>" icon="format-list-bulleted"></nav-item>
+    <nav-item link="<%= admin_events_path %>" title="Coluna social" icon="bell-ring-outline"></nav-item>
+    <nav-item link="<%= admin_galleries_path %>" title="<%= Gallery.model_name.human.pluralize.titleize %>" icon="camera-iris"></nav-item>
+    <nav-item link="<%= admin_radios_path %>" title="<%= Radio.model_name.human.pluralize.titleize %>" icon="radio"></nav-item>
+    <nav-item link="<%= admin_blogs_path %>" title="<%= Blog.model_name.human.pluralize.titleize %>" icon="blogger"></nav-item>
+    <nav-item link="<%= admin_blog_cities_path %>" title="Blogs de Municipios" icon="blogger"></nav-item>
+    <nav-item link="<%= admin_pages_path %>" title="<%= Page.model_name.human.pluralize.titleize %>" icon="newspaper"></nav-item>
+    <nav-item link="<%= admin_counties_path %>" title="<%= County.model_name.human.pluralize.titleize %>" icon="google-maps"></nav-item>
+    <nav-item link="<%= admin_news_index_path %>" title="Notícias de Muicipios" icon="comment-check-outline"></nav-item>
+    <nav-item link="<%= admin_videos_path %>" title="<%= Video.model_name.human.pluralize.titleize %>" icon="play-box-outline"></nav-item>
+    <nav-item link="<%= admin_medias_path %>" title="Link Youtube" icon="play-box-outline"></nav-item>
+    <nav-item link="<%= admin_users_path %>" title="Usuarios" icon="camera-iris"></nav-item>
+
+  </ul>
+</nav>

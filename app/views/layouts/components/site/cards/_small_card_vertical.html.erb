@@ -1,0 +1,10 @@
+<%= link_to url, class: "flex flex-col shadow cardWidth mt-8 #{defined?(margin) ? 'mr-0 lg:mr-8 xl:mr-8' : ''}" do %>
+  <div class="relative cardImageHeight hasSmall flex w-full bg-gray-500 rounded-t-lg">
+    <%= image_tag url_for(image), class: "w-full h-full" if image.attached? %>
+    <div class="absolute bg-blue-700 text-white font-semibold mt-auto bottom-0 ml-4 mb-4 text-xs rounded py-2 px-2"><%= editory %></div>
+  </div>
+  <div class="flex w-full bg-white flex-col rounded-b-lg px-8 py-8 cardTextHeight hasSmall">
+    <span class="font-semibold text-lg"><%= title %></span>
+    <span class="font-semibold text-xs text-gray-400 mt-8"><%= published_at %></span>
+  </div>
+<% end %>

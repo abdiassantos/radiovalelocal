@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <%= stylesheet_link_tag 'admin', media: 'all' %>
+    <%= javascript_include_tag Ckeditor.cdn_url %>
+  </head>
+  <body>
+    <div class="container-scroller" id="app">
+      <%= render partial: 'layouts/components/admin/navbar' %>
+
+      <div class="container-fluid page-body-wrapper pl-0">
+
+        <%= render partial: 'layouts/components/admin/sidebar' %>
+
+        <div class="main-panel">
+          <div class="page-header mb-0 p-3 shadow-sm">
+            <div class="container-fluid d-flex flex-row justify-content-between align-items-center">
+              <%= yield(:page_header) %>
+            </div>
+          </div>
+
+          <div class="content-wrapper">
+            <%= yield %>
+          </div>
+
+          <%= render partial: 'layouts/components/admin/footer' %>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>    
+    <%= javascript_pack_tag 'admin' %>
+    
+    <%#= javascript_include_tag "application" %>
+  </body>
+</html>

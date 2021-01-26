@@ -1,0 +1,40 @@
+<%- model_class = Contact -%>
+<%= content_for :page_header do %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+<% end %>
+
+<% if @contacts.present? %>
+<div class="table-responsive">
+  <table class="table table-rounded bg-white table-striped table-hover shadow-sm">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:message) %></th>
+      <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= link_to contact.id, admin_contact_path(contact) %></td>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.message %></td>
+        <td><%= contact.phone %></td>
+        <td><%= contact.status_i18n %></td>
+        <td><%=l contact.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<% end %>
+
+<div class="paginateBox">
+  <%= paginate @contacts %>
+  <%= page_entries_info @contacts %>
+</div>

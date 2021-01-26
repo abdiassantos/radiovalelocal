@@ -1,0 +1,22 @@
+<%= simple_form_for [:admin, @gallery], :html => { :class => 'form-vertical' } do |f| %>
+  <div class="block block-rounded block-themed">
+    <div class="block-content">
+      <%= f.input :name %>
+
+        <div id="images">
+          <%= f.fields_for :images do |image| %>
+            <%= render 'image_fields', f: image %>
+          <% end %>  
+          <div class="links">
+            <%= link_to_add_association 'add image', f, :images %>
+          </div>
+        </div>
+    </div>
+    <div class="actions">
+      <%= f.submit nil, :class => 'btn btn-primary', :data => {:disable_with => 'Salvando...'} %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    admin_galleries_path, :class => 'btn btn-secondary' %>
+    </div>
+  </div>
+
+<% end %>

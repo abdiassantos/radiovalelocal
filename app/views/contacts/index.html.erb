@@ -1,0 +1,38 @@
+<div class="flex w-full flex-col px-4 xl:px-16 lg:px-16 mt-8">
+  <span class="font-bold text-4xl">Entre em contato</span>
+  <div class="flex mt-2 w-full flex-col lg:flex-row xl:flex-row">
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col mt-12 w-full flex-wrap">
+        <span class="font-bold text-lg">Deixe sua mensagem</span>
+        <span class="mt-2">Não hesite em entrar em contato. Responderemos o mais breve possivel.</span>
+        <%= simple_form_for @contact, html: {class: "mt-8"} do |f| %>
+          <label >Nome</label>
+          <div class="mt-4">
+            <div class="border mt-2 w-full xl:w-1/2 lg:w-1/2">
+              <input class="w-full px-2 py-2" name="contact[name]"/>
+            </div>
+          </div>
+          <div class="mt-4">
+            <label class="">Email</label>
+            <div class="border mt-2 w-full xl:w-1/2 lg:w-1/2">
+              <input class="w-full px-2 py-2" name="contact[email]"/>
+            </div>
+          </div>
+          <div class="mt-4">
+            <label class="">Telefone</label>
+            <div class="border mt-2 w-full xl:w-1/2 lg:w-1/2">
+              <input class="w-full px-2 py-2" name="contact[phone]"/>
+            </div>
+          </div>
+          <div class="mt-4 flex-col flex">
+            <label class="">Mensagem</label>
+            <div class="border mt-2 w-full xl:w-1/2 lg:w-1/2">
+              <textarea class="p-2 w-full mt-4 w-full" name="contact[message]"></textarea>
+            </div>
+          </div>
+          <button class="bg-blue-500 py-4 rounded text-white mt-4 w-full xl:w-1/2 lg:w-1/2">Enviar</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

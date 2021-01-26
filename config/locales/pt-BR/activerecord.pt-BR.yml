@@ -1,0 +1,183 @@
+pt-BR:
+  activerecord:
+    models:
+      article: Artigo
+      banner_category: Categoria
+      banner: banner
+      blog: blog
+      contact: Contato
+      county: Município
+      editory: Editoria
+      event: Coluna social
+      gallery: Galeria
+      image: Imagem
+      medium: Media
+      news: Notícia
+      note: Nota
+      page: Página
+      post: Postagem
+      radio: radio
+      socialnetwork: Redes Sociais
+      user: Usuário
+      video: Vídeo
+
+
+    attributes:
+      default_attributes: &default_attributes
+        title: Título
+        name: Nome
+        email: E-mail
+        description: Descrição
+        content: Conteúdo
+        published_at: Publicado em
+        status: Situação
+        created_at: Cadastrado em
+        updated_at: Atualizado em
+
+      article:
+        <<: *default_attributes
+        editory_id: Editoria
+        county_id: Município
+        user_id: Usuário
+        blog_id: Blog
+        headline: Cabeçalho
+        resume: Resumo
+        image_copyright: Créditos
+        subtitle: Legenda
+        position: Posição
+        source: Fonte
+        published_at: Publicado em
+        editor: Editor
+        count: Contagem
+
+      banner_category:
+        <<: *default_attributes
+        width: Largura
+        height: Altura
+
+      banner:
+        <<: *default_attributes
+        banner_category_id: Categoria
+        start_at: Início
+        finish_at: Término
+        description: Titulo
+        link: Link
+        priority: Ordem
+        target: Target
+        delayer: Atraso
+
+      blog:
+        <<: *default_attributes
+        user_id: Usuário
+        user: Usuário
+        county_id: Município
+        role: Permissão
+        kind: Tipo
+        photo: Imagem
+        background: Imagem de fundo
+
+      contact:
+        <<: *default_attributes
+        message: Mensagem
+        city: Cidade
+        state: Estado
+        phone: Telefone
+
+      county:
+        <<: *default_attributes
+
+      editory:
+        <<: *default_attributes
+        priority: Ordem
+        menu: Menu
+
+      event:
+        <<: *default_attributes
+
+      gallery:
+        <<: *default_attributes
+
+      image:
+        <<: *default_attributes
+        subtitle: Legenda
+
+      medium:
+        <<: *default_attributes
+        kind: Tipo
+        link: Link
+
+      news:
+        <<: *default_attributes
+        editory_id: Editoria
+        county_id: Município
+        user_id: Usuário
+        blog_id: Blog
+        headline: Cabeçalho
+        resume: Resumo
+        image_copyright: Créditos
+        subtitle: Legenda
+        position: Posição
+        source: Fonte
+        published_at: Publicado em
+        editor: Editor
+        count: Visualizações
+
+      note:
+        <<: *default_attributes
+        editory_id: Editoria
+        county_id: Município
+        user_id: Usuário
+        blog_id: Blog
+        headline: Cabeçalho
+        resume: Resumo
+        image_copyright: Créditos
+        subtitle: Legenda
+        position: Posição
+        source: Fonte
+        published_at: Publicado em
+        editor: Editor
+        count: Visualizações
+
+      page:
+        <<: *default_attributes
+        kind: Tipo
+
+      post:
+        <<: *default_attributes
+        editory_id: Editoria
+        county_id: Município
+        user_id: Usuário
+        blog_id: Blog
+        headline: Cabeçalho
+        resume: Resumo
+        image_copyright: Créditos
+        subtitle: Legenda
+        position: Posição
+        source: Fonte
+        published_at: Publicado em
+        editor: Editor
+        count: Visualizações
+
+      radio:
+        <<: *default_attributes
+
+      socialnetwork:
+        <<: *default_attributes
+        color: Cor
+
+      user:
+        <<: *default_attributes
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirme a senha
+        current_password: Senha atual
+        remember_me: Lembrar senha
+        roles: Permissões
+        role_ids: Permissões
+        profile: Perfil
+        block: Bloqueio
+        avatar: Imagem de Perfil
+        remove_avatar: Remover Imagem de Perfil
+
+      video:
+        <<: *default_attributes

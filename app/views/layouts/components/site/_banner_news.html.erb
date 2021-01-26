@@ -1,0 +1,14 @@
+<div class="flex w-full px-4 xl:px-16 lg:px-16 mt-1 relative">
+  <button role="button" aria-label="Previous" class="absolute bottom-10" id="glider-prev-banners"><i class="mr-2 text-4xl fas fa-caret-left text-white"></i></button>
+  <div class="gliderBanner flex mt-4">
+    <% super_banners.each do |banner| %>
+      <%= link_to banner.link, class: "flex flex-col-reverse superBanner mt-8 mr-2 bg-transparent rounded relative" do %>
+        <div class="flex justify-center my-2">
+          <span class="text-xl font-semibold bg-white p-2 lg:font-semibold xl:font-semibold xl:text-2xl lg:text-2xl text-center "><%= banner.description %></span>
+        </div>
+        <%= image_tag url_for(banner.file), class: "w-full innerSuperBanner" %>
+      <% end %>
+    <% end %>
+  </div>  
+  <button role="button" aria-label="Next" class="absolute right-0" id="glider-next-banners"><i class="ml-2 text-4xl fas fa-caret-right text-white"></i></button>
+</div>  

@@ -1,0 +1,13 @@
+<%= link_to url, class: "flex flex-col mb-48 lg:mb-0 xl:mb-0 lg:flex-row xl:flex-row h-48 w-full mt-4" do %>
+  <div class="flex h-auto w-full xl:w-1/4 lg:w-1/4 rounded-r-lg relative">
+    <%= image_tag url_for(image), class: "w-full h-full" if image.attached? %>
+  </div>
+  <div class="flex flex-col my-4 ml-2 w-full xl:w-3/4 lg:w-3/4">
+    <div class="flex mb-6 items-center">
+      <span class="font-bold"><%= author %></span>
+      <i class="mx-2 text-blue-500 fas fa-caret-right"></i>
+      <span class="font-semibold text-xs text-gray-400"><%= published_at %></span>
+    </div>
+    <span class="text-sm truncate xl:break-normal lg:break-normal"><%= description %></span>
+  </div>
+<% end %>

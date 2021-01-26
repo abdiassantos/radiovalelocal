@@ -1,0 +1,51 @@
+<%- model_class = Blog -%>
+<%= content_for :page_header do %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_admin_blog_path, :class => 'btn btn-primary' %>
+<% end %>
+<% if @blogs.present? %>
+  <div class="table-responsive">
+    <table class="table table-rounded bg-white table-striped table-hover shadow-sm">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th><%= model_class.human_attribute_name(:photo) %></th>
+          <th><%= model_class.human_attribute_name(:background) %></th>
+          <th><%= model_class.human_attribute_name(:user) %></th>
+          <th><%= model_class.human_attribute_name(:name) %></th>
+          <th><%= model_class.human_attribute_name(:status) %></th>
+          <th><%= model_class.human_attribute_name(:created_at) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @blogs.each do |blog| %>
+          <tr>
+            <td><%= link_to blog.id, admin_blog_path(blog) %></td>
+            <td><%= image_tag blog.photo.attached? ? url_for(blog.photo) : "", style: "height: 120px;width: 120px;" if blog.photo.attached? %></td>
+            <td><%= image_tag url_for(blog.background), style: "height: 120px;width: 120px;" if blog.background.attached? %></td>
+            <td><%= blog.user.email %></td>
+            <td><%= blog.name %></td>
+            <td><%= blog.status_i18n %></td>
+            <td><%=l blog.created_at %></td>
+            <td class="options">
+             <%= link_to "Postagens",
+                      admin_blog_notes_path(blog), :class => 'btn btn-info btn-sm' %>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_admin_blog_path(blog), :class => 'btn btn-secondary btn-sm' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      admin_blog_path(blog),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-danger btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div class="paginateBox">
+  <%= paginate @blogs %>
+  <%= page_entries_info @blogs %>
+</div>

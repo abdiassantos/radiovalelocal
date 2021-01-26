@@ -1,0 +1,49 @@
+<%- model_class = Note -%>
+<%= content_for :page_header do %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_admin_blog_note_path, :class => 'btn btn-primary' %>
+<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:user) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:content) %></th>
+      <th><%= sort_link(@q, :count, 'Visualizações', default_order: :desc) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= note.id %></td>
+        <td><%= image_tag url_for(note.image), style: "height: 120px;" if note.image.attached?%></td>
+        <td><%= note.try(:user).try(:email) %></td>
+        <td><%= note.title %></td>
+        <td><%= note.content %></td>
+        <td><%= note.count %></td>
+        <td><%= note.status_i18n %></td>
+        <td><%=l note.created_at %></td>
+        <td class="options">
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_admin_blog_note_path(@blog, note), :class => 'btn btn-primary btn-sm' %>
+
+          <%= link_to "Habilitar",
+                      enable_admin_blog_note_path(@blog, note), :method => :post, :class => 'btn btn-success btn-sm' if note.status == "disabled" %>
+
+          <%= link_to "Desabilitar",
+                      admin_blog_note_path(@blog, note),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-danger btn-sm'  if note.status == "enabled" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

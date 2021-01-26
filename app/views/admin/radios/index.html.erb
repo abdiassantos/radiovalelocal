@@ -1,0 +1,40 @@
+<%- model_class = Radio -%>
+<%= content_for :page_header do %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_admin_radio_path, :class => 'btn btn-primary' %>
+<% end %>
+<% if @radios.present? %>
+  <div class="table-responsive">
+    <table class="table table-rounded bg-white table-striped table-hover shadow-sm">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th><%= model_class.human_attribute_name(:title) %></th>
+          <th><%= model_class.human_attribute_name(:description) %></th>
+          <th><%= model_class.human_attribute_name(:link) %></th>
+          <th><%= model_class.human_attribute_name(:created_at) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @radios.each do |radio| %>
+          <tr>
+            <td><%= link_to radio.id, radios_path %></td>
+            <td><%= radio.title %></td>
+            <td><%= radio.description %></td>
+            <td><%= radio.link %></td>
+            <td><%=l radio.created_at %></td>
+            <td class="options">
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_admin_radio_path(radio), :class => 'btn btn-secondary' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div class="paginateBox">
+  <%= paginate @radios %>
+  <%= page_entries_info @radios %>
+</div>

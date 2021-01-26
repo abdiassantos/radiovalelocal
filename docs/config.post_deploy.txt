@@ -1,0 +1,17 @@
+#pre deploy
+
+rm -rf storage/
+
+cp -R /var/www/radiovale/current/storage/ ~/
+
+#pos deploy
+
+rm -rf /var/www/radiovale/current/storage
+
+cp -R storage/ /var/www/radiovale/current
+
+
+
+
+
+ls /var/www/radiovale/current/storage

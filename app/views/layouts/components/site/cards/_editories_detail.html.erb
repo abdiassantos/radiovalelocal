@@ -1,0 +1,6 @@
+<%= link_to url, class: "flex flex-col mt-8 mr-2 rounded relative" do %>
+  <%= image_tag url_for(image), class: "w-full h-full" if image.attached? %>
+  <div class="z-10 bottom-0 h-48 mt-4">
+    <span class="z-10 font-semibold text-lg text-center"><%= title %></span>
+  </div>  
+<% end %>

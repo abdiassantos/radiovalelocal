@@ -1,0 +1,151 @@
+<%= render  "layouts/components/site/modal_news", alert_banner: @alert_banner if @alert_banner.present?%>
+<%= render  "layouts/components/site/bar_news" %>
+<% if @main_banner.present? %>
+  <%= link_to @main_banner.link, class: "flex bg-white flex-col-reverse mt-8 mx-2 bg-transparent rounded relative" do %>
+    <div class="flex justify-center my-2">
+      <span class="text-xl font-semibold bg-white p-2 lg:font-semibold xl:font-semibold xl:text-2xl lg:text-2xl text-center "><%= @main_banner.description %></span>
+    </div>
+  <% end %>
+  <hr class="w-full bg-gray-600 h-1 mt-4" />
+<% end %>
+<% if @super_banners.size > 0 %>
+<%= render  "layouts/components/site/banner_news", super_banners: @super_banners %>
+<% end %>
+<div class="flex w-full flex-col px-4 xl:px-16 lg:px-16 mt-8">
+  <div class="flex w-full flex-col lg:flex-row xl:flex-row">
+    <div class="flex w-full lg:w-2/3 xl:w-2/3 flex-col lg:flex-row xl:flex-row">
+      <div class="flex flex-col w-full lg:w-1/2 xl:w-1/2 mr-2">
+        <% if @main_articles.size > 0 %>
+          <% @main_articles.last(3).each do |article| %>
+            <%= render "layouts/components/site/cards/small_card", url: article_path(article), image: article.image, title: article.title, published_at: article.published_at.strftime("%d/%m/%Y"), editory: article.editory.name %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="flex w-full lg:w-1/2 xl:w-1/2 h-fit mt-2">
+        <% if @main_articles.size > 0 %>
+          <%= render "layouts/components/site/cards/big_card_vertical", url: article_path(@main_articles.first), image: @main_articles.first.image, title: @main_articles.first.title, published_at: @main_articles.first.published_at.strftime("%d/%m/%Y"), editory: @main_articles.first.editory.name %>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex w-full xl:w-1/3 lg:w-1/3 ml-0 mt-4 lg:mt-0 xl:mt-0 lg:ml-8 xl:ml-8 flex-col">
+      <div class="flex flex-col mb-8 mt-2 bg-white px-6 py-8 shadow rounded items-center">
+        <span class="mb-6 w-32 font-bold"><%= image_tag 'radio_logo.png' %></span>
+        <div class="flex flex-col justify-center lg:flex-row xl:flex-row mt-12 w-full flex-wrap">
+          <!--<div class="h-24 w-24">
+            <%#= image_tag 'radio_logo.png', class: "w-full h-full object-contain" %>
+          </div>-->
+          <% if @radio_live.present? %>
+            <div class="w-full justify-center flex">
+              <audio controls>
+                <source src="<%= @radio_live.link %>" type="audio/ogg">
+                <source src="<%= @radio_live.link %>" type="audio/mpeg">
+              Your browser does not support the audio element.
+              </audio>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%= render "layouts/components/site/social_networks" %>
+    </div>
+  </div>
+  <div class="flex mt-12 w-full flex-col lg:flex-row xl:flex-row">
+    <div class="flex flex-col w-full lg:w-2/3 xl:w-2/3">
+      <hr class="w-full bg-gray-600 h-1" />
+      <div class="flex mt-12">
+        <span class="font-bold text-lg">ÚLTIMAS NOTICIAS</span>
+        <div class="ml-auto">
+          <a href="#" class="text-sm font-bold mr-4">TODAS</a>
+        </div>
+      </div>
+      <div class="flex flex-wrap mt-4">
+        <% if @last_articles.size > 0 %>
+          <% @last_articles.reverse.each_with_index do |article, index| %>
+            <% if index.even? %>
+              <%= render "layouts/components/site/cards/small_card_vertical", url: article_path(article), image: article.image, title: article.title, description: "", published_at: article.published_at.strftime("%d/%m/%Y"), editory: article.editory.name, margin: true %>
+            <% else %>
+              <%= render "layouts/components/site/cards/small_card_vertical", url: article_path(article), image: article.image, title: article.title, description: "", published_at: article.published_at.strftime("%d/%m/%Y"), editory: article.editory.name %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex flex-col w-full xl:w-1/3 lg:w-1/3 ml-0 mt-4 lg:mt-0 xl:mt-0 lg:ml-8 xl:ml-8">
+      <%= render "layouts/components/site/side_banners" %>
+      <div class="flex flex-col  bg-white px-6 py-8 shadow rounded">
+        <span class="mb-2 font-bold">MAIS LIDAS</span>
+        <% @most_articles.each do |article| %>
+          <%= render "layouts/components/site/most_reads", url: article_path(article), image: article.image, title: article.title, published_at: article.published_at.strftime("%d/%m/%Y") %>
+        <% end %>
+      </div>
+      <div class="flex flex-col mt-8 bg-white px-6 py-8 shadow rounded">
+        <span class="mb-6 font-bold">BOLETIM DIÁRIO</span>
+        <span class="mb-4 text-gray-700"><i class="text-lg far fa-envelope mr-2"></i>Assine nossos boletim diário</span>
+        <form class="relative h-12 mt-2 border rounded-lg">
+          <input placeholder="Seu endereço de email" type="text" class="border rounded-lg py-2 px-2 w-full h-full" name="search" />
+          <button class="bg-blue-600 text-white right-0 top-0 w-auto h-full rounded-r-lg absolute flex items-center justify-center">
+            <span class="px-6 font-bold text-sm">ASSINAR</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="w-full flex my-8 justify-center">
+    <% if @banner_middle.present? %>
+      <%= link_to @banner_middle.link, class: "flex flex-col middleBanner bg-gray-600 h-32 w-full xl:w-2/3 lg:w-2/3" do %>
+        <%= image_tag url_for(@banner_middle.file), class: "object-fill w-full h-full" if @banner_middle.file.attached? %>
+      <% end %>
+    <% end %>
+  </div>
+  <hr class="w-full bg-gray-600 h-1" />
+  <div class="flex flex-col w-full">
+    <div class="flex mt-12">
+      <span class="font-bold text-lg">ESCOLHA DOS EDITORES</span>
+    </div>
+    <div class="flex">
+      <button role="button" aria-label="Previous" id="glider-prev-articles"><i class="mr-2 text-4xl fas fa-caret-left"></i></button>
+      <div class="gliderArticles flex mt-4">
+        <% @editor_articles.each do |article| %>
+          <!--<span><%#= article.title %></span-->
+          <%= render "layouts/components/site/cards/editories_detail", url: article_path(article),  image: article.image, title: article.title %>
+        <% end %>
+      </div>  
+      <button role="button" aria-label="Next" id="glider-next-articles"><i class="ml-2 text-4xl fas fa-caret-right"></i></button>
+    </div>  
+  </div>
+  <div class="flex flex-col lg:flex-row xl:flex-row mt-12 w-full flex-wrap">
+    <% @editories.each_with_index do |editory, index| %>
+      <%= render "layouts/components/site/editory_container", editory: editory, url: editory_path(editory), title: editory.name.upcase, margin: index.even? ? true : false %>
+    <% end %>
+  </div>
+  <div class="flex mt-12 w-full flex-col xl:flex-row lg:flex-row">
+    <div class="flex flex-col w-full xl:w-full lg:w-full">
+      <hr class="w-full bg-gray-600 h-1" />
+      <div class="flex flex-col w-full">
+        <div class="flex mt-12">
+          <span class="font-bold text-lg">MUNICIPIOS</span>
+        </div>
+        <div class="flex mt-4 flex-wrap">
+          <% County.order(created_at: :desc).each do |county| %>
+            <% if county.news.last.present? %>
+              <%= render "layouts/components/site/cards/counties_detail", url: county_path(county),  image: county.news.last.image, title: county.news.last.title, county: county.name %>
+            <% end %>
+          <% end %>
+        </div>  
+      </div>
+    </div>
+    <!--<div class="flex flex-col w-full xl:w-1/3 lg:w-1/3 ml-0 xl:ml-8 lg:ml-8 mt-8 xl:mt-0 lg:mt-0">
+      <%= link_to "#", class: "flex flex-col shadow rounded relative" do %>
+        <img src="https://amerikicklanghorne.com/wp-content/uploads/2017/04/default-image.jpg" class="w-full h-full">
+        <div class="px-6 py-8 mb-2 absolute">
+          <span class="font-bold text-white">PUBLICIDADE</span>
+        </div>
+      <% end %>
+      <%= link_to "#", class: "flex flex-col bg-gray-700 mt-8 h-40 xl:h-full lg:h-full shadow rounded relative" do%>
+        <div class="px-6 py-8 mb-2 absolute">
+          <span class="font-bold text-white">PUBLICIDADE</span>
+        </div>
+      <% end %>
+    </div>-->
+  </div>
+
+</div>

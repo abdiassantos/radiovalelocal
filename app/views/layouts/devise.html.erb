@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PortalVale</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'admin', media: 'all' %>
+  </head>
+  <body class="login-page">
+    <div id="app">
+      <section class="upper">
+        <div class="container">
+
+          <%= yield %>
+
+        </div>
+      </section>
+    </div>
+
+    <%= javascript_pack_tag 'admin' %>
+
+    <%= pnotify_flash -%>
+  </body>
+</html>

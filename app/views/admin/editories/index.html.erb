@@ -1,0 +1,43 @@
+<%- model_class = Editory -%>
+<%= content_for :page_header do %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_admin_editory_path, :class => 'btn btn-primary' %>
+<% end %>
+<% if @editories.present? %>
+  <div class="table-responsive">
+    <table class="table table-rounded bg-white table-striped table-hover shadow-sm">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th><%= model_class.human_attribute_name(:name) %></th>
+          <th><%= model_class.human_attribute_name(:status) %></th>
+          <th><%= model_class.human_attribute_name(:created_at) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @editories.each do |editory| %>
+          <tr>
+            <td><%= link_to editory.id, admin_editory_path(editory) %></td>
+            <td><%= editory.name %></td>
+            <td><%= editory.status_i18n %></td>
+            <td><%=l editory.created_at %></td>
+            <td class="options">
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_admin_editory_path(editory), :class => 'btn btn-secondary btn-sm' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      admin_editory_path(editory),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-danger btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div class="paginateBox">
+  <%= paginate @editories %>
+  <%= page_entries_info @editories %>
+</div>

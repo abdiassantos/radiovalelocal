@@ -1,0 +1,13 @@
+<%= link_to url, class: "flex cardWidth h-48 rounded-lg mt-4 mr-2 shadow" do %>
+  <div class="flex w-6/12 flex-col rounded-l-lg px-8 py-8 justify-center items-center">
+    <span class="font-semibold"><%= title %></span>
+    <!--<span class="font-semibold text-xl mt-8"><%#= author %></span>-->
+  </div>
+  <div class="flex h-auto w-6/12 bg-gray-500 rounded-r-lg relative">
+    <% if image.present? %>
+      <%= image_tag url_for(image), class: "w-full h-full rounded-r-lg" if image.attached? %>
+    <% else %>
+      <img src="https://amerikicklanghorne.com/wp-content/uploads/2017/04/default-image.jpg" class="w-full h-full rounded-r-lg">
+    <% end %>
+  </div>
+<% end %>

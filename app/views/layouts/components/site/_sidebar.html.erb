@@ -1,0 +1,39 @@
+<div class="overlaySidebar absolute hidden"></div>
+<div class="sidebar overflow-y-scroll hidden bg-white w-64 absolute shadow-md z-20 pb-20">
+  <div class="flex flex-col ml-8 mt-8">
+    <span class="font-bold text-lg">EDITORIAS</span>
+    <% Editory.all.each do |editory| %>
+      <%= link_to editory_path(editory), class: "mt-4" do %>
+        <i class="mr-2 text-blue-500 fas fa-caret-right"></i><%= editory.name.upcase %>
+      <% end %>
+    <% end %>
+    <span class="font-bold text-lg mt-16">MUNICIPIOS</span>
+    <% County.all.each do |county| %>
+      <%= link_to county_path(county), class: "mt-4" do %>
+        <i class="mr-2 text-blue-500 fas fa-caret-right"></i><span class="truncate"><%= county.name.upcase %></span>
+      <% end %>
+    <% end %>
+    <span class="font-bold text-lg mt-16">BLOGS</span>
+    <% Blog.all.each do |blog| %>
+      <%= link_to blog_notes_path(blog), class: "mt-4" do %>
+        <i class="mr-2 text-blue-500 fas fa-caret-right"></i><span class="truncate"><%= blog.name.upcase[0..15] %>...</span>
+      <% end %>
+    <% end %>
+    <span class="font-bold text-lg mt-16">SERVIÇOS</span>
+    <%= link_to galleries_path, class: "mt-4" do %>
+      <i class="mr-2 text-blue-500 fas fa-caret-right"></i>FOTOS
+    <% end %>
+    <%= link_to radios_path, class: "mt-4" do %>
+      <i class="mr-2 text-blue-500 fas fa-caret-right"></i>RADIO
+    <% end %>
+    <%= link_to youtube_ao_vivo_videos_path, class: "mt-4" do %>
+      <i class="mr-2 text-blue-500 fas fa-caret-right"></i>YOUTUBE AO VIVO
+    <% end %>
+    <%= link_to videos_path, class: "mt-4" do %>
+      <i class="mr-2 text-blue-500 fas fa-caret-right"></i>VIDEOS
+    <% end %>
+    <%= link_to contacts_path, class: "mt-4" do %>
+      <i class="mr-2 text-blue-500 fas fa-caret-right"></i>CONTATO
+    <% end %>
+  </div>
+</div>

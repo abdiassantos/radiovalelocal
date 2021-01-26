@@ -1,0 +1,51 @@
+.table-rounded {
+  border-radius: 0.5rem;
+
+  thead {
+    th {
+      border-top: none;
+    }
+    
+    td:first-child, th:first-child {
+      border-left: none;
+    }
+  }
+}
+
+.table {
+  &.table-xs {
+    * {
+      font-size: 0.8rem;
+    }
+  }
+  th {
+    text-transform: uppercase;
+  }
+
+  .bg-footer {
+    background-color: #657289 !important;
+  }
+
+  .bg-winner {
+    color: #016200;
+    background-color: rgba(29, 250, 26, 0.5) !important;
+  }
+
+  .options {
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.md-shadow {
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
+              0px 1px 1px 0px rgba(0,0,0,0.14),
+              0px 2px 1px -1px rgba(0,0,0,0.12) !important;
+}
+
+.table-font-small {
+  * {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,11 @@
+<%= link_to url, class: "flex w-full h-64 rounded-lg mt-8 shadow" do %>
+  <div class="flex h-auto w-6/12 bg-gray-500 rounded-l-lg relative">
+    <%= image_tag url_for(image), class: "w-full h-full" if image.attached?  %>
+    <div class="absolute bg-blue-700 text-white font-semibold mt-auto bottom-0 ml-4 mb-4 text-xs rounded py-2 px-2"><%= editory %></div>
+  </div>
+  <div class="flex w-6/12 bg-white flex-col rounded-r-lg px-8 py-8">
+    <span class="font-semibold text-xl truncate xl:break-normal lg:break-normal"><%= title %></span>
+    <span class="font-semibold text-xs text-gray-400 mt-4"><%= published_at %></span>
+    <!--<span class="font-light mt-6 text-sm truncate xl:break-normal lg:break-normal"><%= description %></span>-->
+  </div>
+<% end %>

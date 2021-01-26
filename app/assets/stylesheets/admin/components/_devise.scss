@@ -1,0 +1,30 @@
+.page-header {
+  .page-header-image {
+    position: absolute;
+    background-size: cover;
+    background-position: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+
+  background-image: radial-gradient(at 50% 100%, rgba(22, 26, 255, 0.75), rgb(15, 1, 94));
+  // background-image: radial-gradient(at 50% 100%, #232e59, #234798);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("patterns/pexels-photo.jpg");
+    filter: grayscale(100%);
+    opacity: 0.2;
+  }
+}

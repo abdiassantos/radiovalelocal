@@ -1,0 +1,38 @@
+
+<div class="flex w-full flex-col px-4 xl:px-16 lg:px-16 mt-8">
+  <span class="font-bold text-4xl"><%= @gallery.name %></span>
+  <div class="flex mt-4 w-full flex-col lg:flex-row xl:flex-row">
+    <div class="flex flex-col w-full lg:w-2/3 xl:w-2/3">
+      <div class="relative flex flex-col w-full rounded-t-lg glider-contain">
+        <div class="flex h-full">
+          <button role="button" aria-label="Previous" id="glider-prev"><i class="mr-2 text-4xl fas fa-caret-left"></i></button>
+          <div class="glider">
+            <% @gallery.images.each do |image| %>
+              <div>
+                <%= image_tag url_for(image.file), class: "w-full h-full" %>
+              </div>
+            <% end %>
+          </div>
+          <button role="button" aria-label="Next" id="glider-next"><i class="ml-2 text-4xl fas fa-caret-right"></i></button>
+        </div>
+        <div role="tablist" id="dots"></div>
+        
+      </div>
+      <hr class="w-full bg-gray-600 h-1 my-8" />
+      <span class="font-bold text-4xl">Mais Fotos</span>
+      <div class="flex flex-col lg:flex-row xl:flex-row mt-12 w-full flex-wrap">
+        <% Gallery.all.shuffle.last(5).each_with_index do |gallery, index| %>
+          <% if index.even? %>
+            <%= render "layouts/components/site/cards/gallery_card", image: gallery.images.last.file, title: gallery.name, url: gallery_path(gallery), margin: true %>
+          <% else %>
+            <%= render "layouts/components/site/cards/gallery_card", image: gallery.images.last.file, title: gallery.name, url: gallery_path(gallery) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex flex-col w-full xl:w-1/3 lg:w-1/3 ml-0 mt-4 lg:mt-0 xl:mt-0 lg:ml-8 xl:ml-8">
+      <%= render "layouts/components/site/side_banners" %>
+      <%= render "layouts/components/site/social_networks" %>
+    </div>
+  </div>
+</div>

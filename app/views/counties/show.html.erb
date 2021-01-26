@@ -1,0 +1,27 @@
+<div class="flex w-full flex-col px-4 xl:px-16 lg:px-16 mt-8">
+  <span class="font-bold text-4xl"><%= @county.name.upcase %></span>
+  <div class="flex mt-2 w-full flex-col lg:flex-row xl:flex-row">
+    <div class="flex flex-col w-full lg:w-2/3 xl:w-2/3">
+      <div class="flex flex-wrap mt-4">
+        <% @news.each_with_index do |article, index| %>
+          <% if index.even? %>
+            <%= render "layouts/components/site/cards/small_card_vertical", url: county_news_path(county_id: @county, id: article), image: article.image, title: article.title, description: article.content[0..100].html_safe, published_at: article.published_at.strftime("%d/%m/%Y"), editory: @county.name, margin: true %>
+          <% else %>
+            <%= render "layouts/components/site/cards/small_card_vertical", url: county_news_path(county_id: @county, id: article), image: article.image, title: article.title, description: article.content[0..100].html_safe, published_at: article.published_at.strftime("%d/%m/%Y"), editory: @county.name %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= paginate @news %>
+    </div>
+    <div class="flex flex-col w-full xl:w-1/3 lg:w-1/3 ml-0 mt-4 lg:mt-0 xl:mt-0 lg:ml-8 xl:ml-8">
+      <div class="flex flex-col  bg-white px-6 py-8 shadow rounded">
+        <span class="mb-2 font-bold">MAIS LIDAS</span>
+        <% @most_articles.each do |article| %>
+          <%= render "layouts/components/site/most_reads",url: article_path(article), image: article.image, title: article.title, published_at: article.published_at.strftime("%d/%m/%Y") %>
+        <% end %>
+      </div>
+      <%= render "layouts/components/site/side_banners" %>
+      <%= render "layouts/components/site/social_networks" %>
+    </div>
+  </div>
+</div>

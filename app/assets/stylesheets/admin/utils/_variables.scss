@@ -1,0 +1,33 @@
+/* Colors */
+$colorPrimary: #2459ae;
+// $colorSecondary: #E0C54B;
+// $colorTextPrimary: #444444;
+// $colorTextSecondary: lighten($colorTextPrimary, 40);
+// $colorGrayLight: #f2f2f2;
+// $colorGrayDark: #8d8d8d;
+// $colorGrayBg: #f5f4f4;
+
+/* Colors Variants*/
+$colorPrimaryDark: darken($colorPrimary, 10);
+$colorPrimaryLight: lighten($colorPrimary, 10);
+
+/* Bootstrap Grid Breakpoints */
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+/* Animation */
+$animationTiming: .3s;
+$animationTimingFunction: ease-in-out;
+
+/* Fonts */
+$fontPrimary: 'Maison Neue', sans-serif;
+
+$theme-colors: (
+  "primary": $colorPrimary,
+  // "secondary": $colorSecondary
+);

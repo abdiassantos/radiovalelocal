@@ -1,0 +1,36 @@
+/* Fonts */
+@font-face {
+  font-family: "ubuntu-light";
+  src: font-url("Ubuntu/Ubuntu-Light.eot");
+  /* IE9 Compat Modes */
+  src: font-url("Ubuntu/Ubuntu-Light.woff2") format("woff2"),
+    font-url("Ubuntu/Ubuntu-Light.woff") format("woff"),
+    font-url("Ubuntu/Ubuntu-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ubuntu-regular";
+  src: font-url("Ubuntu/Ubuntu-Regular.eot");
+  /* IE9 Compat Modes */
+  src: font-url("Ubuntu/Ubuntu-Regular.woff2") format("woff2"),
+    font-url("Ubuntu/Ubuntu-Regular.woff") format("woff"),
+    font-url("Ubuntu/Ubuntu-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ubuntu-medium";
+  src: font-url("Ubuntu/Ubuntu-Medium.eot");
+  /* IE9 Compat Modes */
+  src: font-url("Ubuntu/Ubuntu-Medium.woff2") format("woff2"),
+    font-url("Ubuntu/Ubuntu-Medium.woff") format("woff"),
+    font-url("Ubuntu/Ubuntu-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ubuntu-bold";
+  src: font-url("Ubuntu/Ubuntu-Bold.eot");
+  /* IE9 Compat Modes */
+  src: font-url("Ubuntu/Ubuntu-Bold.woff2") format("woff2"),
+    font-url("Ubuntu/Ubuntu-Bold.woff") format("woff"),
+    font-url("Ubuntu/Ubuntu-Bold.ttf") format("truetype");
+}

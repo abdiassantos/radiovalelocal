@@ -1,0 +1,14 @@
+<%= simple_form_for [:admin, @user], :html => { :class => 'form-vertical' } do |f| %>
+  <div class="block block-rounded block-themed">
+    <div class="block-content">
+      <%= f.input :email %>
+      <%= f.input :name %>
+      <%= f.input :password %>
+    </div>
+    <div class="actions">
+      <%= f.submit nil, :class => 'btn btn-primary', :data => {:disable_with => 'Salvando...'} %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    admin_users_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

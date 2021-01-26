@@ -1,0 +1,4 @@
+pt-BR:
+  paper_trail:
+    update: Atualização
+    create: Cadastro

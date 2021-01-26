@@ -1,0 +1,55 @@
+pt-BR:
+  enums:
+    default_status: &default_status
+      status:
+        enabled: Publicado
+        disabled: Não Publicado
+
+    contact:
+      status:
+        pendent: Pendente
+        discarted: Descartada
+        answered: Respondida
+
+    banner:
+      <<: *default_status
+      kind:
+        super: Super Banner
+        side: Banner Lateral
+        alert: Banner Alerta
+        middle: Banner Meio
+        main: Manchete
+
+
+    blog:
+      <<: *default_status
+      kind:
+        normal: Blog Padrão
+        county: Blog de Município
+
+    county:
+      <<: *default_status
+
+    editory:
+      <<: *default_status
+
+    gallery:
+      <<: *default_status
+
+    medium:
+      kind:
+        radio: Rádio
+        youtube: Youtube
+
+    page:
+      <<: *default_status
+      kind:
+        about_radio: Sobre a rádio
+        about_group: Sobre o grupo
+
+    post:
+      <<: *default_status
+      position:
+        normal: Matéria
+        main: Manchete
+

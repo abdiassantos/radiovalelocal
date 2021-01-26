@@ -1,0 +1,35 @@
+<div class="col-lg-5 col-md-8 mx-auto">
+  <div class="card bg-secondary shadow border-0">
+    <div class="card-header bg-white">
+      <div class="btn-wrapper text-center">
+        <h2>Esqueceu sua senha</h2>
+      </div>
+    </div>
+    <div class="card-body px-lg-5 py-lg-5">
+      <div class="text-center text-muted mb-4">
+        <h6 class="text-muted">Enviaremos os dados de <br>recuperação para o seu e-mail</h6>
+      </div>
+      <%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%#= show_errors_for(f.object) %>
+        <div class="form-group mb-3">
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <%= fa_icon(:envelope) %>
+              </span>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", hide_label: true, wrapper: false, class: 'form-control', placeholder: 'E-mail' %>
+            <%#= f.errors_on :email %>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <%= f.button 'Enviar', class: 'btn btn-primary my-4', data: { disable_with: "#{fa_icon('spinner spin')} Enviando...".html_safe } %>
+        </div>
+        <small class="d-flex flex-direction-column justify-content-center w-100">
+          <%= render "users/shared/links" %>
+        </small>
+      <% end %>
+    </div>
+  </div>
+</div>

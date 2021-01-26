@@ -1,0 +1,49 @@
+<div class="col-lg-5 col-md-8 mx-auto">
+  <div class="card bg-secondary shadow border-0">
+    <div class="card-header bg-white">
+      <div class="btn-wrapper text-center">
+        <h2>Mude sua senha</h2>
+      </div>
+    </div>
+    <div class="card-body px-lg-5 py-lg-5">
+      <%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%#= f.error_notification %>
+
+        <%= f.hidden_field :reset_password_token %>
+        <%#= f.full_error :reset_password_token %>
+
+        <div class="form-group">
+          <%= f.label :password, 'Nova senha' %>
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <%= fa_icon(:asterisk) %>
+              </span>
+            </div>
+            <%= f.password_field :password, hide_label: true, wrapper: false, class: 'form-control', placeholder: 'Nova senha', help: "Deixe em branco se não deseja alterar a senha atual." %>
+            <%#= f.errors_on :password %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <%= fa_icon(:asterisk) %>
+              </span>
+            </div>
+            <%= f.password_field :password_confirmation, hide_label: true, wrapper: false, class: 'form-control', placeholder: 'Senha atual', help: "Precisamos que você digite sua senha atual para confirmar as alterações." %>
+            <%#= f.errors_on :password_confirmation %>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <%= f.button 'Enviar', class: 'btn btn-primary my-4', data: { disable_with: "#{fa_icon('spinner spin')} Enviando...".html_safe } %>
+        </div>
+        <small class="d-flex flex-direction-column justify-content-center w-100">
+          <%= render "users/shared/links" %>
+        </small>
+      <% end %>
+    </div>
+  </div>
+</div>

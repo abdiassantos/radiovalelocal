@@ -1,0 +1,15 @@
+<%= bootstrap_form_for [:admin, @banner], layout: :vertical do |f| %>
+  <div class="block block-rounded block-themed">
+    <div class="block-content">
+      <%= f.file_field :file %>
+      <%= f.text_field :link %>
+      <%= f.text_field :description %>
+      <%= f.collection_select :kind, Banner.kinds.map{ |dp| [dp.first, dp.first.humanize] }, :first, :second, { prompt: 'Selecione a Tipo' }, {class: ''} %>
+    </div>
+    <div class="actions">
+      <%= f.submit nil, :class => 'btn btn-primary', :data => {:disable_with => 'Salvando...'} %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    admin_articles_path, :class => 'btn btn-secondary' %>
+    </div>
+  </div>
+<% end %>

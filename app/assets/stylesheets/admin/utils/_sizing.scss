@@ -1,0 +1,83 @@
+.w-xl-25 {
+  @include media-breakpoint-up(xl) {
+    width: 25% !important;
+  }
+}
+.w-xl-50 {
+  @include media-breakpoint-up(xl) {
+    width: 50% !important;
+  }
+}
+.w-xl-75 {
+  @include media-breakpoint-up(xl) {
+    width: 75% !important;
+  }
+}
+.w-xl-100 {
+  @include media-breakpoint-up(xl) {
+    width: 75% !important;
+  }
+}
+
+.w-lg-25 {
+  @include media-breakpoint-up(lg) {
+    width: 25% !important;
+  }
+}
+.w-lg-50 {
+  @include media-breakpoint-up(lg) {
+    width: 50% !important;
+  }
+}
+.w-lg-75 {
+  @include media-breakpoint-up(lg) {
+    width: 75% !important;
+  }
+}
+.w-lg-100 {
+  @include media-breakpoint-up(lg) {
+    width: 75% !important;
+  }
+}
+
+.w-md-25 {
+  @include media-breakpoint-up(md) {
+    width: 25% !important;
+  }
+}
+.w-md-50 {
+  @include media-breakpoint-up(md) {
+    width: 50% !important;
+  }
+}
+.w-md-75 {
+  @include media-breakpoint-up(md) {
+    width: 75% !important;
+  }
+}
+.w-md-100 {
+  @include media-breakpoint-up(md) {
+    width: 75% !important;
+  }
+}
+
+.w-sm-25 {
+  @include media-breakpoint-up(sm) {
+    width: 25% !important;
+  }
+}
+.w-sm-50 {
+  @include media-breakpoint-up(sm) {
+    width: 50% !important;
+  }
+}
+.w-sm-75 {
+  @include media-breakpoint-up(sm) {
+    width: 75% !important;
+  }
+}
+.w-sm-100 {
+  @include media-breakpoint-up(sm) {
+    width: 75% !important;
+  }
+}

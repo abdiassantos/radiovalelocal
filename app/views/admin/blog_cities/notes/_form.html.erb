@@ -1,0 +1,17 @@
+<%= simple_form_for [:admin, @blog, @note], :html => { :class => 'form-vertical' } do |f| %>
+  <%= f.input :image %>
+  <%= f.input :subtitle %>
+  <%= f.input :title %>
+  <%= f.text_area :content, id: "article-ckeditor" %>
+  <%= f.input :published_at %>
+
+  <%= f.submit nil, :class => 'btn btn-primary', :data => {:disable_with => 'Salvando...'} %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                admin_articles_path, :class => 'btn btn-secondary' %>
+<% end %>
+
+<script>
+setTimeout(function(){
+  CKEDITOR.replace( 'article-ckeditor',{"customConfig":"<%= asset_path('ckeditor/config.js') %>"} ) //Your selector must match the textarea ID
+},400);
+</script>

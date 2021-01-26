@@ -1,0 +1,5 @@
+import bootstrap from 'bootstrap'
+import initPerfectScrollbar from './perfect-scrollbar'
+import './cocoon'
+import './pnotify'
+import './waves'

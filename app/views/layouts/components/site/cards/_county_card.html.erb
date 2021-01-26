@@ -1,0 +1,8 @@
+<%= link_to url, class: "flex flex-col w-full xl:w-1/2 lg:w-1/2 mt-8 mr-8" do %>
+  <div class="cardImageHeight hasBig flex w-full bg-gray-500 rounded-lg mb-8">
+    <%= image_tag url_for(image), class: "w-full h-full" if image.attached?  %>
+  </div>
+  <span class="font-semibold text-lg"><%= title %></span>
+  <span class="font-semibold text-xs text-gray-800 mt-8"><%= published_at %></span>
+  <!--<span class="font-light mt-8 text-sm"><%= description %></span>-->
+<% end %>

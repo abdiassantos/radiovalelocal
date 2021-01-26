@@ -1,0 +1,35 @@
+.innerShadow {
+
+  &.hasWidth {
+    min-width: 100%;
+
+    @media only screen and (min-width: 992px) {
+      min-width: 24%;
+      max-width: 24%;
+    }
+
+    
+    @media only screen and (min-width: 1200px) {
+      min-width: 24%;
+      max-width: 24%;
+    }
+  }
+
+  &.hasMediumHeight{
+    height: 290px;
+  }
+   
+  // &::before {
+  //   position: absolute;
+  //   left: 0;
+  //   bottom: 0;
+  //   content: "";
+  //   width: 100%;
+  //   height: 120px;
+  //   border-radius: 0 0 2px 2px;
+  //   background: -moz-linear-gradient(top,transparent 0%,rgba(0,0,0,0.01) 10%,rgba(0,0,0,0.8) 92%);
+  //   background: -webkit-linear-gradient(top,transparent 0%,rgba(0,0,0,0.01) 10%,rgba(0,0,0,0.8) 92%);
+  //   background: linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.01) 10%,rgba(0,0,0,0.8) 92%);
+  //   z-index: 4;
+  // }
+}

@@ -1,0 +1,50 @@
+<div class="col-lg-5 col-md-8 mx-auto">
+  <div class="card bg-secondary shadow border-0">
+    <div class="card-header bg-white">
+      <div class="btn-wrapper text-center">
+        <h2>Login</h2>
+      </div>
+    </div>
+    <div class="card-body px-lg-5 py-lg-5">
+      <div class="text-center text-muted mb-4">
+        <small>Entre com suas credenciais</small>
+      </div>
+      <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= show_errors_for(f.object) %>
+        <div class="form-group mb-3">
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <%= fa_icon(:envelope) %>
+              </span>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", hide_label: true, wrapper: false, class: 'form-control', placeholder: 'E-mail' %>
+            <%= f.errors_on :email %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <%= fa_icon(:asterisk) %>
+              </span>
+            </div>
+            <%= f.password_field :password, autocomplete: "current-password", hide_label: true, wrapper: false, class: 'form-control', placeholder: 'Senha' %>
+            <%= f.errors_on :password %>
+          </div>
+        </div>
+        <div class="custom-control custom-control-alternative custom-checkbox">
+          <%= f.check_box_without_bootstrap :remember_me, hide_label: true, class: 'custom-control-input' if devise_mapping.rememberable? %>
+          <label class="custom-control-label" for="user_remember_me"><span class="text-default opacity-5">Lembrar senha</span></label>
+        </div>
+        <div class="text-center">
+          <%# <button type="button" class="btn btn-primary my-4">Login</button> %>
+          <%= f.button 'Entrar', class: 'btn btn-primary my-4', data: { disable_with: "#{fa_icon('spinner spin')} Entrando...".html_safe } %>
+        </div>
+        <small class="d-flex flex-direction-column justify-content-center w-100">
+          <%= render "users/shared/links" %>
+        </small>
+      <% end %>
+    </div>
+  </div>
+</div>

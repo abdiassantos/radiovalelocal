@@ -1,0 +1,47 @@
+<%- model_class = Video -%>
+<%= content_for :page_header do %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_admin_video_path, :class => 'btn btn-primary' %>
+<% end %>
+<% if @videos.present? %>
+  <div class="table-responsive">
+    <table class="table table-rounded bg-white table-striped table-hover shadow-sm">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th><%= model_class.human_attribute_name(:title) %></th>
+          <th><%= model_class.human_attribute_name(:description) %></th>
+          <th><%= model_class.human_attribute_name(:link) %></th>
+          <th><%= model_class.human_attribute_name(:deleted_at) %></th>
+          <th><%= model_class.human_attribute_name(:created_at) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @videos.each do |video| %>
+          <tr>
+            <td><%= link_to video.id, admin_video_path(video) %></td>
+            <td><%= video.title %></td>
+            <td><%= video.description %></td>
+            <td><%= video.link %></td>
+            <td><%= video.deleted_at %></td>
+            <td><%=l video.created_at %></td>
+            <td class="options">
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_admin_video_path(video), :class => 'btn btn-secondary' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      admin_video_path(video),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div class="paginateBox">
+  <%= paginate @videos %>
+  <%= page_entries_info @videos %>
+</div>

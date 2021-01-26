@@ -1,0 +1,51 @@
+<%- model_class = Banner -%>
+<%= content_for :page_header do %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_admin_banner_path, :class => 'btn btn-primary' %>
+<% end %>
+<% if @banners.present? %>
+  <div class="table-responsive">
+    <table class="table table-rounded bg-white table-striped table-hover shadow-sm">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th><%= model_class.human_attribute_name(:image) %></th>
+          <th>Titulo</th>
+          <th><%= model_class.human_attribute_name(:link) %></th>
+          <th><%= model_class.human_attribute_name(:kind) %></th>
+          <th><%= model_class.human_attribute_name(:created_at) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @banners.each do |banner| %>
+          <tr>
+            <td><%= link_to banner.id, admin_banner_path(banner) %></td>
+            <% if banner.file.attached?  %>
+              <td><%= image_tag url_for(banner.file), style: "width: 120px;", class: 'img-fluid rounded' %></td>
+            <% else %>
+              <td>-</td>
+            <% end %>
+            <td><%= banner.description %></td>
+            <td><%= banner.link %></td>
+            <td><%= banner.kind_i18n %></td>
+            <td><%=l banner.created_at %></td>
+            <td class="options">
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_admin_banner_path(banner), :class => 'btn btn-primary btn-sm' %>
+              <%= link_to "Deletear",
+                      admin_banner_path(banner),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-danger btn-sm'%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div class="paginateBox">
+  <%= paginate @banners %>
+  <%= page_entries_info @banners %>
+</div>

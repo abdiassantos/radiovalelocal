@@ -1,0 +1,14 @@
+<%= simple_form_for [:admin, @video], :html => { :class => 'form-vertical' } do |f| %>
+  <div class="block block-rounded block-themed">
+    <div class="block-content">
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :link %>
+    </div>
+    <div class="actions">
+      <%= f.submit nil, :class => 'btn btn-primary', :data => {:disable_with => 'Salvando...'} %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    admin_videos_path, :class => 'btn btn-secondary' %>
+    </div>
+  </div>
+<% end %>

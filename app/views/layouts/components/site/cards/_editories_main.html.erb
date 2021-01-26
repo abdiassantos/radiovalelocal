@@ -1,0 +1,7 @@
+<%= link_to url, class: "w-full flex flex-col innerShadow mr-2 rounded relative" do %>
+  <%= image_tag url_for(image), class: "w-full h-64" if image.attached? %>
+  <div class=" z-10  my-4  ">
+    <div class="z-10 font-semibold text-lg mt-auto"><%= title %></div>
+    <div class="z-10 font-semibold text-xs mt-8 mb-8"><%= published_at %></div>
+  </div>  
+<% end %>

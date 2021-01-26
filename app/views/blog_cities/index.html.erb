@@ -1,0 +1,22 @@
+<div class="flex w-full flex-col px-4 xl:px-16 lg:px-16 mt-8">
+  <span class="font-bold text-4xl">Blogs de municipios</span>
+  <div class="flex mt-2 w-full flex-col lg:flex-row xl:flex-row">
+    <div class="flex flex-col w-full lg:w-2/3 xl:w-2/3">
+      <div class="flex flex-col lg:flex-row xl:flex-row mt-12 w-full flex-wrap">
+        <% @blogs.each do |blog| %>
+          <%= render "layouts/components/site/cards/blog_card", url: blog_city_notes_path(blog_city_id: blog), title: blog.name, image: blog.photo, author: blog.user.name %>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex flex-col w-full xl:w-1/3 lg:w-1/3 ml-0 mt-4 lg:mt-0 xl:mt-0 lg:ml-8 xl:ml-8">
+      <div class="flex flex-col  bg-white px-6 py-8 shadow rounded">
+        <span class="mb-2 font-bold">MAIS LIDAS</span>
+        <% @most_articles.each do |article| %>
+          <%= render "layouts/components/site/most_reads",url: article_path(article), image: article.image, title: article.title, published_at: article.published_at.strftime("%d/%m/%Y") %>
+        <% end %>
+      </div>
+      <%= render "layouts/components/site/side_banners" %>
+      <%= render "layouts/components/site/social_networks" %>
+    </div>
+  </div>
+</div>
